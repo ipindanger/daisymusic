@@ -119,12 +119,12 @@ def map(pos):
 @Client.on_message(filters.command("help") & ~filters.private & ~filters.channel)
 async def ghelp(_, message: Message):
     await message.reply_text(
-        f"""**HALLO MONYET, GW BISA MUTER LAGU DI GOURP ATAU CHANNEL LU ORANG.**""",
+        f"""**HALLO MONYET, GW BISA MUTER LAGU DI GROUP ATAU CHANNEL LU ORANG.**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "🟡 Click here for help 🟡", url=f"https://t.me/{BOT_USERNAME}?start"
+                        "🟡 PENCET KALO KEPO 🟡", url=f"https://t.me/{BOT_USERNAME}?start"
                     )
                 ]
             ]
