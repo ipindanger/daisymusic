@@ -52,10 +52,10 @@ async def pause(_, message: Message):
     if (chat_id not in callsmusic.active_chats) or (
         callsmusic.active_chats[chat_id] == "paused"
     ):
-        await message.reply_text("❗ Nothing is playing!")
+        await message.reply_text("❗ KAGA ADA YANG DIPLAY BODOH!")
     else:
         callsmusic.pause(chat_id)
-        await message.reply_text("▶️ Paused!")
+        await message.reply_text("▶️ TERHENTI NJING!")
 
 
 @Client.on_message(command("resume") & other_filters)
@@ -66,10 +66,10 @@ async def resume(_, message: Message):
     if (chat_id not in callsmusic.active_chats) or (
         callsmusic.active_chats[chat_id] == "playing"
     ):
-        await message.reply_text("❗ Nothing is paused!")
+        await message.reply_text("❗ KAGA ADA LAGU TOLOL!")
     else:
         callsmusic.resume(chat_id)
-        await message.reply_text("⏸ Resumed!")
+        await message.reply_text("⏸ OKE LANJUT BABI!")
 
 
 @Client.on_message(command("end") & other_filters)
@@ -78,7 +78,7 @@ async def resume(_, message: Message):
 async def stop(_, message: Message):
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.active_chats:
-        await message.reply_text("❗ Nothing is streaming!")
+        await message.reply_text("❗ KAGA ADA LAGU, MAU BERHENTIIN APA?!")
     else:
         try:
             queues.clear(chat_id)
@@ -86,7 +86,7 @@ async def stop(_, message: Message):
             pass
 
         await callsmusic.stop(chat_id)
-        await message.reply_text("❌ Stopped streaming!")
+        await message.reply_text("❌ BERHENTI JUGA MONYET!")
 
 
 @Client.on_message(command("skip") & other_filters)
@@ -96,7 +96,7 @@ async def skip(_, message: Message):
     global que
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.active_chats:
-        await message.reply_text("❗ Nothing is playing to skip!")
+        await message.reply_text("❗ HIDUP LU KEBANYAKAN SKIP!")
     else:
         queues.task_done(chat_id)
         if queues.is_empty(chat_id):
