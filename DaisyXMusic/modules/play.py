@@ -69,7 +69,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("You ain't allowed!", show_alert=True)
+            await cb.answer("MONYET MANA BISA!", show_alert=True)
             return
 
     return decorator
@@ -152,9 +152,9 @@ async def playlist(client, message):
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "**Now Playing** in {}".format(message.chat.title)
+    msg = "**LAGI MUTER LAGU JELEK** in {}".format(message.chat.title)
     msg += "\n- " + now_playing
-    msg += "\n- Req by " + by
+    msg += "\n- REQUESTAN SI JELEK " + by
     temp.pop(0)
     if temp:
         msg += "\n\n"
@@ -163,7 +163,7 @@ async def playlist(client, message):
             name = song[0]
             usr = song[1].mention(style="md")
             msg += f"\n- {name}"
-            msg += f"\n- Req by {usr}\n"
+            msg += f"\n- REQUESTAN SI JELEK {usr}\n"
     await message.reply_text(msg)
 
 
@@ -260,7 +260,7 @@ async def hfmm(_, message):
     if status == "ON" or status == "on" or status == "On":
         lel = await message.reply("`Processing...`")
         if not message.chat.id in DISABLED_GROUPS:
-            await lel.edit("Music Player Already Activated In This Chat")
+            await lel.edit("DAH NYALA")
             return
         DISABLED_GROUPS.remove(message.chat.id)
         await lel.edit(
@@ -271,7 +271,7 @@ async def hfmm(_, message):
         lel = await message.reply("`Processing...`")
         
         if message.chat.id in DISABLED_GROUPS:
-            await lel.edit("Music Player Already turned off In This Chat")
+            await lel.edit("NAH MATI KAN TOLOL")
             return
         DISABLED_GROUPS.append(message.chat.id)
         await lel.edit(
@@ -341,7 +341,7 @@ async def m_cb(b, cb):
             await cb.answer("Chat is not connected!", show_alert=True)
         else:
             callsmusic.pause(chet_id)
-            await cb.answer("Music Paused!")
+            await cb.answer("OTAK LU NGEPAUSE!")
             await cb.message.edit(
                 updated_stats(m_chat, qeue), reply_markup=r_ply("play")
             )
@@ -353,7 +353,7 @@ async def m_cb(b, cb):
             await cb.answer("Chat is not connected!", show_alert=True)
         else:
             callsmusic.resume(chet_id)
-            await cb.answer("Music Resumed!")
+            await cb.answer("PLAYYYDOH!")
             await cb.message.edit(
                 updated_stats(m_chat, qeue), reply_markup=r_ply("pause")
             )
@@ -388,7 +388,7 @@ async def m_cb(b, cb):
             await cb.answer("Chat is not connected or already playng", show_alert=True)
         else:
             callsmusic.resume(chet_id)
-            await cb.answer("Music Resumed!")
+            await cb.answer("JALAN LAGI ETOT!")
     elif type_ == "puse":
         if (chet_id not in callsmusic.active_chats) or (
             callsmusic.active_chats[chet_id] == "paused"
@@ -396,7 +396,7 @@ async def m_cb(b, cb):
             await cb.answer("Chat is not connected or already paused", show_alert=True)
         else:
             callsmusic.pause(chet_id)
-            await cb.answer("Music Paused!")
+            await cb.answer("OTAK LU NGEPAUSE!")
     elif type_ == "cls":
         await cb.answer("Closed menu")
         await cb.message.delete()
@@ -428,15 +428,15 @@ async def m_cb(b, cb):
             queues.task_done(chet_id)
             if queues.is_empty(chet_id):
                 callsmusic.stop(chet_id)
-                await cb.message.edit("- No More Playlist..\n- Leaving VC!")
+                await cb.message.edit("- No LAGUNYA ABIS SETAN..\n- BYE MONYET!")
             else:
                 await callsmusic.set_stream(
                     chet_id, queues.get(chet_id)["file"]
                 )
-                await cb.answer.reply_text("✅ <b>Skipped</b>")
+                await cb.answer.reply_text("✅ <b>HIDUP LU SKIP MULU</b>")
                 await cb.message.edit((m_chat, qeue), reply_markup=r_ply(the_data))
                 await cb.message.reply_text(
-                    f"- Skipped track\n- Now Playing **{qeue[0][0]}**"
+                    f"- SI TOLOL DI SKIP\n- LAGU BARU **{qeue[0][0]}**"
                 )
 
     else:
@@ -458,7 +458,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔄 <b>Processing</b>")
+    lel = await message.reply("🔄 <b>SABAR MONYET PROSES</b>")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -513,7 +513,7 @@ async def play(_, message: Message):
         )
         return
     text_links=None
-    await lel.edit("🔎 <b>Finding</b>")
+    await lel.edit("🔎 <b>NYARI AQUA BEKAS</b>")
     if message.reply_to_message:
         if message.reply_to_message.audio:
             pass
@@ -542,7 +542,7 @@ async def play(_, message: Message):
     if audio:
         if round(audio.duration / 60) > DURATION_LIMIT:
             await lel.edit(
-                f"❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed to play!"
+                f"❌ PANJANG AMAT {DURATION_LIMIT} MENIT, GABISA TOLOL!"
             )
             return
         keyboard = InlineKeyboardMarkup(
@@ -569,7 +569,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🎵 <b>Processing</b>")
+        await lel.edit("🎵 <b>SABAR MONYET PROSES</b>")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -586,7 +586,7 @@ async def play(_, message: Message):
 
         except Exception as e:
             await lel.edit(
-                "Song not found.Try another song or maybe spell it properly."
+                "LAGU LU JELEK, MASA KAGA ADA. CARI YANG LAEN BODOH."
             )
             print(str(e))
             return
@@ -596,7 +596,7 @@ async def play(_, message: Message):
                 dur += (int(dur_arr[i]) * secmul)
                 secmul *= 60
             if (dur / 60) > DURATION_LIMIT:
-                 await lel.edit(f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!")
+                 await lel.edit(f"❌ PANJANG AMAT {DURATION_LIMIT} MENIT, GABISA TOLOL!")
                  return
         except:
             pass        
@@ -623,7 +623,7 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("🎵 **Processing**")
+        await lel.edit("🎵 **SABAR MONYET PROSES**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         
         try:
@@ -632,7 +632,7 @@ async def play(_, message: Message):
           await lel.edit("Give me something to play")
         # Looks like hell. Aren't it?? FUCK OFF
         try:
-            toxxt = "**Select the song you want to play**\n\n"
+            toxxt = "**NIH GW KASIH PILIHAN, LU PILIH DAH.**\n\n"
             j = 0
             useer=user_name
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣",]
@@ -679,7 +679,7 @@ async def play(_, message: Message):
 
             except Exception as e:
                 await lel.edit(
-                    "Song not found.Try another song or maybe spell it properly."
+                    "LAGU LU JELEK, MASA KAGA ADA. CARI YANG LAEN BODOH"
                 )
                 print(str(e))
                 return
@@ -689,7 +689,7 @@ async def play(_, message: Message):
                     dur += (int(dur_arr[i]) * secmul)
                     secmul *= 60
                 if (dur / 60) > DURATION_LIMIT:
-                     await lel.edit(f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!")
+                     await lel.edit(f"❌ PANJANG AMAT {DURATION_LIMIT} MENIT, GABISA TOLOL!")
                      return
             except:
                 pass
@@ -744,7 +744,7 @@ async def play(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music 😎".format(
+            caption="▶️ <b>NYETEL LAGU</b> REQUEST DARI SI JELEK {} via Youtube Music 😎".format(
                 message.from_user.mention()
             ),
         )
@@ -757,7 +757,7 @@ async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔄 <b>Processing</b>")
+    lel = await message.reply("🔄 <b>SABAR MONYET PROSES</b>")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -811,7 +811,7 @@ async def ytplay(_, message: Message):
             f"<i> {user.first_name} Userbot not in this chat, Ask admin to send /play command for first time or add {user.first_name} manually</i>"
         )
         return
-    await lel.edit("🔎 <b>Finding</b>")
+    await lel.edit("🔎 <b>NYARI AQUA BEKAS</b>")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -820,7 +820,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🎵 <b>Processing</b>")
+    await lel.edit("🎵 <b>SABAR MONYET PROSES</b>")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -847,7 +847,7 @@ async def ytplay(_, message: Message):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         if (dur / 60) > DURATION_LIMIT:
-             await lel.edit(f"❌ Videos longer than {DURATION_LIMIT} minutes aren't allowed to play!")
+             await lel.edit(f"❌ PANJANG AMAT {DURATION_LIMIT} MENIT, GABISA TOLOL!")
              return
     except:
         pass    
@@ -902,7 +902,7 @@ async def ytplay(_, message: Message):
         await message.reply_photo(
             photo="final.png",
             reply_markup=keyboard,
-            caption="▶️ <b>Playing</b> here the song requested by {} via Youtube Music 😎".format(
+            caption="▶️ <b>NYETEL LAGU</b> REQUSET DARI SI JELEK {} via Youtube Music 😎".format(
                 message.from_user.mention()
             ),
         )
