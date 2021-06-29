@@ -1,9 +1,9 @@
 {
-  "name": "DaisyXMusic",
-  "logo": "https://telegra.ph/file/36ff1b571aa11df5812de.jpg",
-  "description": "Open-Source bot to play songs in your Telegram's Group Voice Chat. Powered by PyTgCalls.",
+  "name": "DarksideClouds",
+  "logo": "https://telegra.ph/file/7af89ec4a588dd69fbe58.jpg",
+  "description": "enjoy aja dah musikan etot.",
   "keywords": ["music", "voicechat", "telegram"],
-  "repository": "https://github.com/TeamofDaisyX/DaisyXMusic",
+  "repository": "https://github.com/ipindanger/daisymusic",
   "buildpacks": [
    {
      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
@@ -52,7 +52,7 @@
     "BG_IMAGE": {
       "description": "BG image of bot (Use transparent one) [IGNORE].",
       "required": false,
-      "value": " https://telegra.ph/file/dcfdf612e499eef0e0b1f.png"
+      "value": " https://telegra.ph/file/da227672f6d81b15f6b4d.jpg"
     },     
     "UPDATES_CHANNEL": {
       "description": "Updates Channel without @ [Leave this if you don't have one].",
