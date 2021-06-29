@@ -663,7 +663,7 @@ async def play(_, message: Message):
             return
             # Returning to pornhub
         except:
-            await lel.edit("No Enough results to choose.. Starting direct play..")
+            await lel.edit("LAH IDIOT, YANG BENER TOLOL..")
                         
             # print(results)
             try:
