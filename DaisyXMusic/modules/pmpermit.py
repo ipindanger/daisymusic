@@ -34,7 +34,7 @@ async def pmPermit(client: USER, message: Message):
                 return
             await USER.send_message(
                 message.chat.id,
-                "Hi there, This is a music assistant service .\n\n ❗️ Rules:\n   - No chatting allowed\n   - No spam allowed \n\n 👉 **SEND GROUP INVITE LINK OR USERNAME IF USERBOT CAN'T JOIN YOUR GROUP.**\n\n ⚠️ Disclamer: If you are sending a message here it means admin will see your message and join chat\n    - Don't add this user to secret groups.\n   - Don't Share private info here\n\n",
+                "Hi etot, ini Darkside assistant.\n\n  Rules:\n   - Gausah bacot\n   - Gausah spam\n    - Liat bio\n\n  **kirim link group atau username group kalo asistant gamau join.**\n\n  Disclamer: Kalo udah chat kesini tapi gak ada respon, chat owner di bio.\n    - Kalo patah-patah gausah bacot. kick aja, vps mahal bangsat.\n   - Gausah chat @ipinmine \n\n",
             )
             return
 
